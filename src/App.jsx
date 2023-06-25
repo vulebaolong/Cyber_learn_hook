@@ -9,6 +9,8 @@ import AddUser from "./pages/AddUser/AddUser";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Home from "./pages/Home/Home";
 import MovieDetail from "./pages/MovieDetail/MovieDetail";
+import Search from "./pages/Search/Search";
+import DemoUseRef from "./pages/DemoUseRef/DemoUseRef";
 
 function App() {
     return (
@@ -16,10 +18,13 @@ function App() {
             <Routes>
                 {/* MainLayout */}
                 <Route path="/" element={<MainLayout />}>
+                    <Route path="/" element={<Home />} />
                     <Route path="/list-movie" element={<Home />} />
                     <Route path="/list-movie/:id" element={<MovieDetail />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/contact" element={<Contact />} />
+                    <Route path="/search" element={<Search />} />
+                    <Route path="/useref" element={<DemoUseRef />} />
                 </Route>
 
                 {/* AdminLayout */}
