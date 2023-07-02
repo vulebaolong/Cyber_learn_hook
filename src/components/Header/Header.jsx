@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./Header.css";
 import { HomeOutlined, MailOutlined, SettingOutlined } from "@ant-design/icons";
-import { Button, Menu, Space } from "antd";
+import { Avatar, Button, Menu, Space } from "antd";
+import { getLocalStorage } from "../../utils/localStorage";
 
 const items = [
     {
@@ -48,17 +49,9 @@ const items = [
 ];
 
 function Header() {
-    const [search, setSearch] = useState("");
     const navigate = useNavigate();
-    const handleInput = (e) => {
-        setSearch(e.target.value);
-    };
-    const handleSearch = (e) => {
-        e.preventDefault();
-        if (search) {
-            navigate(`/search?q=${search}`);
-        }
-    };
+    const userLogin = getLocalStorage("userLogin");
+    console.log(userLogin);
     const [current, setCurrent] = useState("mail");
     const onClick = (e) => {
         console.log("click ", e);
@@ -79,10 +72,23 @@ function Header() {
                 items={items}
                 style={{ flex: 1, backgroundColor: "transparent" }}
             />
-            <Space>
-                <Button>Đăng nhập</Button>
-                <Button type="primary">Đăng ký</Button>
-            </Space>
+            {userLogin === undefined ? (
+                <Space>
+                    <Button
+                        onClick={() => {
+                            navigate("/login");
+                        }}
+                    >
+                        Đăng nhập
+                    </Button>
+                    <Button type="primary">Đăng ký</Button>
+                </Space>
+            ) : (
+                <Space size={10}>
+                    <Avatar src="https://picsum.photos/200" size={40} />
+                    <span style={{ fontWeight: 700 }}>{userLogin.hoTen}</span>
+                </Space>
+            )}
         </div>
     );
 }

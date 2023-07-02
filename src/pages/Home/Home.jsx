@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { TOKEN_CYBER } from "../../constants/baseContants";
 import { Avatar, Button, Card, Col, Row, Skeleton, Typography } from "antd";
 import SkeListMovie from "../../components/SkeListMovie/SkeListMovie";
+import useStickyState from "../../hooks/useStickyState";
+import { useSelector } from "react-redux";
 const { Meta } = Card;
 const { Text, Link } = Typography;
 
@@ -34,6 +36,8 @@ function Home() {
                 setLoading(false);
             });
     }, []);
+
+    const {value, setValue} = useStickyState("green", "persisted-color")
 
     const renderListMovie = () => {
         return listMovie.map((item, index) => {
@@ -98,7 +102,9 @@ function Home() {
         });
     };
 
+
     return (
+
         <div
             className="container
         "

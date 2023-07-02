@@ -11,6 +11,7 @@ import Home from "./pages/Home/Home";
 import MovieDetail from "./pages/MovieDetail/MovieDetail";
 import Search from "./pages/Search/Search";
 import DemoUseRef from "./pages/DemoUseRef/DemoUseRef";
+import Login from "./pages/Login/Login";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/search" element={<Search />} />
                     <Route path="/useref" element={<DemoUseRef />} />
+                    <Route path="/login" element={<Login />} />
                 </Route>
 
                 {/* AdminLayout */}
